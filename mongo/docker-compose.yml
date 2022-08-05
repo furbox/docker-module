@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  mongodb:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: mongodb-service
+    restart: always
+    environment:
+      MONGO_INITDB_USERNAME: admin
+      MONGO_INITDB_PASSWORD: admin
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo/:/etc/mongo
+
+volumes:
+  mongo:
