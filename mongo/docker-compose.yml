@@ -4,7 +4,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    container_name: mongodb-service
+    container_name: mongodb_service
     restart: always
     environment:
       MONGO_INITDB_USERNAME: admin
