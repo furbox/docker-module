@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  appnode:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: appnode
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ./app:/home/app
+
+  dbmongo:
+    build: 
+      context: ../mongo
+      dockerfile: Dockerfile
+    container_name: dbmongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=rootpass
+    volumes:
+      - ./mongo:/data/db
+
+volumes:
+  app:
+  mongo:
